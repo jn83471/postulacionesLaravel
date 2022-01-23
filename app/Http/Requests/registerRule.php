@@ -24,7 +24,19 @@ class registerRule extends FormRequest
     public function rules()
     {
         return [
-            "puesto"=>'required'
+            "nombre"=>'required|min:2',
+            "app"=>'required|min:2',
+            "apm"=>'required|min:2',
+            "email"=>'required|email',
+            "calle"=>'required|min:5',
+            "col"=>'required|min:5',
+            "numero"=>'required',
+            "col"=>'required|min:5',
+            "cp"=>'required|size:5',
+            "phone"=>'required',
+            "rfc"=>'required|size:13',
+            "files"=>'required|array',
+            "puesto"=>'required|exists:puestos,id'
         ];
     }
 }

@@ -59,16 +59,16 @@ class register extends Controller
         );
         foreach ($request->file('files') as $file) {
             $name = $file->getClientOriginalName();
-            $file->move(public_path() . '/upload/', $cad.$name);
+            $file->move('upload/', $cad.$name);
             filas::create(
                 [
                     "id_prospect"=>$prospect->id,
-                    "src"=>public_path() . '/upload/'.$cad.$name
+                    "src"=>'upload/'.$cad.$name
                 ]
                 );
             $data[] = $name;
         }
-        return redirect()->route("welcome");
+        return redirect()->route("welcome")->with("message","Se ha agregado la postulación.");
     }
 
     /**

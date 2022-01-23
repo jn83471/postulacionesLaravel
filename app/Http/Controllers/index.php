@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\loginRule;
 use App\Models\prospects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class index extends Controller
             return view("welcome");
         }
     }
-    public function login(Request $request){
+    public function login(loginRule $request){
         $email=$request->input("email",null);
         $password=$request->input("password",null);
         if (Auth::attempt(['email' => $email, 'password' => $password])) {

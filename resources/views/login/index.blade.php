@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,23 +21,29 @@
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p class="lead fw-normal mb-0 me-3">Inisiar sesión</p>
             </div>
-  
+
             <!-- Email input -->
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example3">Email</label>
               <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" name="email"/>
-  
+                placeholder="Ingresa tu email" name="email"/>
+                @if($errors->has('email'))
+                    <div class="error">{{ $errors->first('email') }}</div>
+                @endif
+
             </div>
-  
+
             <!-- Password input -->
             <div class="form-outline mb-3">
               <label class="form-label" for="form3Example4">Password</label>
               <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Enter password" name="password" />
-  
+                placeholder="Ingresa tu contraseña" name="password" />
+                @if($errors->has('password'))
+                    <div class="error">{{ $errors->first('password') }}</div>
+                @endif
+
             </div>
-  
+
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->
               <div class="form-check mb-0">
@@ -47,12 +53,12 @@
                 </label>
               </div>
             </div>
-  
+
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="submit" class="btn btn-primary btn-lg"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Entrar</button>
             </div>
-  
+
           </form>
         </div>
       </div>
@@ -63,7 +69,7 @@
         Copyright © 2020. All rights reserved.
       </div>
       <!-- Copyright -->
-  
+
       <!-- Right -->
       <div>
         <a href="#!" class="text-white me-4">
@@ -82,7 +88,7 @@
       <!-- Right -->
     </div>
   </section>
-        
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

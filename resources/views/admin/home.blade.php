@@ -42,15 +42,15 @@
                 <form action="{{route("prospects.update",[$p->id])}}" method="post">{{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <button type="submit" class="btn btn-success" value="acept" name="acept">Autorizar</button>
-                    <button type="submit" class="btn btn-danger mt-1" value="reset" name="acept">Rechazar</button>
                 </form>
+                <a href="{{route("prospects.show",[$p->id])}}" class="btn btn-danger mt-1">Rechazar</a>
                 @endif
-                
+
             </td>
         </tr>
         @endforeach
     </tbody>
-    
+
   </table>
 </div>
 @if (!$prospect->onFirstPage())
@@ -59,7 +59,7 @@
 </a>
 @endif
         @if ($prospect->hasMorePages())
-                
+
                 <a href="{{ $prospect->nextPageUrl() }}" class="btn btn-primary" rel="next" aria-label="@lang('pagination.next')">
                     Siguiente página
                 </a>

@@ -79,6 +79,7 @@ class prospects extends Controller
     public function update(Request $request, $id)
     {
         $prospect=ModelsProspects::findOrFail($id);
+        $razon=$request->input("Razor");
         if($request->input("acept")=="acept"){
             $prospect->update([
                 "Estatus"=>1
@@ -87,6 +88,7 @@ class prospects extends Controller
         }
         else{
             $prospect->update([
+                "Motive"=>$razon,
                 "Estatus"=>2
             ]);
             return redirect()->route("welcome")->with("message","Se ha rechazado con exito");

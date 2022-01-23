@@ -27,6 +27,7 @@ class CreateProspectsTable extends Migration
             $table->integer("puesto");
             $table->string("rfc");
             $table->boolean("Estatus")->default(0);
+            $table->string("Motive")->nullable();
             $table->timestamps();
         });
     }
