@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\prospects as ModelsProspects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class prospects extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authcheck')->except(["show","index"]);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        
+        $prospect=ModelsProspects::with('hasPuesto')->get();
+        return $prospect;
     }
 
     /**
@@ -46,16 +52,19 @@ class prospects extends Controller
      */
     public function show($id)
     {
-        
+
         if(request()->ajax()){
-            $prospect=ModelsProspects::with('hasPuesto')->where('nombre','like',$id.'%')->get();
+            $prospect=ModelsProspects::with('hasPuesto')->where('nombre','like','%'.$id.'%')->get();
             return $prospect;
         }
         else{
+            if(!Auth::check()){
+                return redirect()->route("welcome");
+            }
             $prospect=ModelsProspects::with('hasPuesto')->findOrFail($id);
             return view("admin/prospects/show",compact('prospect'));
         }
-        
+
     }
 
     /**

@@ -19,6 +19,9 @@
 
         <img class="logo" src="https://image.ibb.co/b3tQRK/153297876771137380.png">
 
+
+        <span class="right"> <a href="{{route("postulantes")}}" class="text-white">Postulantes</a></span>
+
         <span class="right"> <a href="{{route("login")}}" class="text-white">Login</a></span>
 
         <span class="right"> <a href="{{route("register.index")}}" class="text-white">Register</a></span>

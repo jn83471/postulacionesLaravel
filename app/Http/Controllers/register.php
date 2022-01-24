@@ -42,6 +42,7 @@ class register extends Controller
     {
         $date=Carbon::now();
         $cad=date_format($date,"dmyyHis");
+        $namefiles=$request->input("nameFile");
         $prospect=prospects::create(
             [
                 "nombre"=>$request->input("nombre"),
@@ -57,15 +58,18 @@ class register extends Controller
                 "rfc"=>$request->input("rfc")
             ]
         );
+        $index=0;
         foreach ($request->file('files') as $file) {
             $name = $file->getClientOriginalName();
             $file->move('upload/', $cad.$name);
             filas::create(
                 [
                     "id_prospect"=>$prospect->id,
-                    "src"=>'upload/'.$cad.$name
+                    "src"=>'upload/'.$cad.$name,
+                    "name"=>$namefiles[$index]
                 ]
                 );
+            $index++;
             $data[] = $name;
         }
         return redirect()->route("welcome")->with("message","Se ha agregado la postulación.");

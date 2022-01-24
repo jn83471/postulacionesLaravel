@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class filas extends Model
 {
     use HasFactory;
-    protected $fillable=["id_prospect","src"];
+    protected $fillable=["id_prospect","src","name"];
 
 }

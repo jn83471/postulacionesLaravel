@@ -44,7 +44,7 @@ async function searchf(e){
         const numero=document.createElement("td");
         numero.textContent=`${element.numero}`;
         tr.appendChild(numero);
-        
+
         const colonia=document.createElement("td");
         colonia.textContent=`${element.colonia}`;
         tr.appendChild(colonia);
@@ -52,7 +52,7 @@ async function searchf(e){
         const cp=document.createElement("td");
         cp.textContent=`${element.cp}`;
         tr.appendChild(cp);
-        
+
         const email=document.createElement("td");
         colonia.textContent=`${element.email}`;
         tr.appendChild(email);
@@ -60,11 +60,11 @@ async function searchf(e){
         const phone=document.createElement("td");
         phone.textContent=`${element.phone}`;
         tr.appendChild(phone);
-        
+
         const rfc=document.createElement("td");
         rfc.textContent=`${element.email}`;
         tr.appendChild(rfc);
-        
+
         const puesto=document.createElement("td");
         puesto.textContent=`${element.has_puesto.display_name}`;
         tr.appendChild(puesto);
@@ -88,7 +88,7 @@ async function searchf(e){
             btn_acept.name="acept";
             btn_acept.value="acept";
             btn_acept.textContent="Autorizar";
-    
+
             const btn_reject=document.createElement("button");
             btn_reject.classList.add("btn","btn-danger","mt-2");
             btn_reject.name="acept";
@@ -100,7 +100,7 @@ async function searchf(e){
             form.appendChild(btn_reject);
             acciones.appendChild(form);
         }
-        
+
         tr.appendChild(acciones);
 
         content.appendChild(tr);

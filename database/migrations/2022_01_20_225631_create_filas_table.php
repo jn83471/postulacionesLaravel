@@ -17,6 +17,7 @@ class CreateFilasTable extends Migration
             $table->id();
             $table->integer("id_prospect");
             $table->string("src");
+            $table->string("name");
             $table->timestamps();
         });
     }

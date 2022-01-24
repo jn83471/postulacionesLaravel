@@ -15,10 +15,10 @@
             @endif
             <ul class="list-group">
                 @foreach ($prospect->hasfiles as $fila)
-                    <li class="list-group-item position-relative overflow-hidden" style="text-overflow: ellipsis;">{{$fila->src}} <a href="/{{$fila->src}}" class="position-absolute top-0 end-0 m-2" target="_blank"><i class="fas fa-external-link-alt"></i></a></li>
+                    <li class="list-group-item position-relative overflow-hidden" style="text-overflow: ellipsis;">{{$fila->name}} <a href="/{{$fila->src}}" class="position-absolute top-0 end-0 m-2" target="_blank"><i class="fas fa-external-link-alt"></i></a></li>
                 @endforeach
             </ul>
-            
+
             @if($prospect->Estatus==0)
                 <form action="{{route("prospects.update",[$prospect->id])}}" method="post">{{ csrf_field() }}
                     {{ method_field('PUT') }}

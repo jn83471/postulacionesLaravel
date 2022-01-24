@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\puestos;
 use Illuminate\Http\Request;
 
-class userController extends Controller
+class puestosApiController extends Controller
 {
+    //
     public function __construct()
     {
-        $this->middleware('authcheck');
+        $this->middleware('auth:api')->except(["store"]);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $user=User::all();
-        return view("admin.users.index",compact('user'));
+
     }
 
     /**
@@ -29,7 +29,7 @@ class userController extends Controller
      */
     public function create()
     {
-        return view("admin.users.create");
+        //
     }
 
     /**
@@ -40,16 +40,7 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        $nombre=$request->input("nombre");
-        $email=$request->input("email");
-        User::create(
-            [
-                "name"=>$nombre,
-                "password"=>bcrypt("12345678"),
-                "email"=>$email
-            ]
-        );
-        return redirect()->route("usuario.index")->with("message","Se ha creado el usuario");
+        return puestos::all();
     }
 
     /**
@@ -60,7 +51,7 @@ class userController extends Controller
      */
     public function show($id)
     {
-        //
+        return puestos::findOrFail($id);
     }
 
     /**
@@ -71,8 +62,7 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        $user=User::findOrFail($id);
-        return view("admin.users.edit",compact('user'));
+        //
     }
 
     /**
@@ -84,14 +74,7 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $nombre=$request->input("nombre");
-        $email=$request->input("email");
-        $user=User::findOrFail($id);
-        $user->update([
-            "name"=>$nombre,
-            "email"=>$email
-        ]);
-        return redirect()->route("usuario.index")->with("message","Se ha editado el usuario");
+        return $request->all();
     }
 
     /**
@@ -102,6 +85,12 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $puestos=puestos::findOrFail($id);
+        $puestos->update(
+            [
+                "Estatus"=>($puestos->Estatus==0)?1:0
+            ]
+            );
+        return ["message"=>"Se ha modificado el estatus del puesto","Estatus"=>0];
     }
 }

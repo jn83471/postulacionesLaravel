@@ -37,4 +37,8 @@ class index extends Controller
             return redirect()->route("welcome");
         }
     }
+    public function lista(){
+        $prospect=prospects::with('hasPuesto')->paginate(15);
+        return view("lista",compact(["prospect"]));
+    }
 }

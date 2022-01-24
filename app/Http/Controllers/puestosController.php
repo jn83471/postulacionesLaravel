@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class puestosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authcheck');
+    }
     /**
      * Display a listing of the resource.
      *

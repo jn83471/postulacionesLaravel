@@ -16,7 +16,7 @@
             <tbody id="content">
                 @foreach ($user as $p)
                 <tr>
-                    <th scope="row"><a href="{{route("usuario.show",[$p->id])}}">{{$p->id}}</a> </th>
+                    <th scope="row">{{$p->id}}</a> </th>
                     <td>{{$p->name}}</td>
                     <td>
                         {{$p->email}}
@@ -27,6 +27,6 @@
                 </tr>
                 @endforeach
             </tbody>
-            
+
           </table>
 @stop

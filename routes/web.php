@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [index::class,'index'],["name"=>"welcome"])->name("welcome");
+Route::get('/postulantes', [index::class,'lista'],["name"=>"postulantes"])->name("postulantes");
 Route::post("/login",[index::class,'login'],["name"=>"login.post"])->name("login.post");
 Route::get("/logout",[index::class,'logout'],["name"=>"logout"])->name("logout");
 Route::get('/login', [login::class,'index'],["name"=>"login"])->name("login");

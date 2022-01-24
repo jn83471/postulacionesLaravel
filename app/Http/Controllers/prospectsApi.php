@@ -50,8 +50,7 @@ class prospectsApi extends Controller
      */
     public function show($id)
     {
-
-
+        return prospects::with('hasPuesto','hasfiles')->findOrFail($id);
     }
 
     /**
@@ -74,7 +73,21 @@ class prospectsApi extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $prospect=prospects::findOrFail($id);
+        $razon=$request->input("razor");
+        if($request->input("acept")=="add"){
+            $prospect->update([
+                "Estatus"=>1
+            ]);
+            return ["message"=>"se ha aceptado con exito","Estatus"=>0];
+        }
+        else{
+            $prospect->update([
+                "Motive"=>$razon,
+                "Estatus"=>2
+            ]);
+            return ["message"=>"se ha rechazado con exito","Estatus"=>0];
+        }
     }
 
     /**
